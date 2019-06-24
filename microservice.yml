@@ -21,7 +21,7 @@ actions:
       type: string
     http:
       method: get
-      endpoint: /concat
+      path: /concat
       port: 5000
 
 
