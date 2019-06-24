@@ -1,8 +1,9 @@
+omg: 1 
+
 info:
   version: 1.0.1
-  title: Vanilla
-  description: This is a vanilla application
+  title: Currency Converter 
+  description: This is a sample currency converter service
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT 
-omg: 1
