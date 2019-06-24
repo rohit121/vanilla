@@ -8,6 +8,23 @@ info:
     name: MIT
     url: https://opensource.org/licenses/MIT
 
+actions:
+  concat:
+    arguments:
+      left:
+        type: string
+        in: query
+      right:
+        type: string
+        in: query
+    output:
+      type: string
+    http:
+      method: get
+      endpoint: /concat
+      port: 5000
+
+
 lifecycle:
   startup:
     command: ["FLASK_APP=example.py", "flask", "run", "--host=0.0.0.0"] 
