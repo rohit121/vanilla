@@ -1,30 +1,47 @@
-omg: 1 
-
+omg: 1
 info:
   version: 1.0.1
-  title: Currency Converter 
+  title: Currency Converter
   description: This is a sample currency converter service
+  contact:
+    name: John Doe
+    url: https://support.example.com
+    email: support@example.com
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
-
-actions:
-  concat:
-    arguments:
-      left:
-        type: string
-        in: query
-      right:
-        type: string
-        in: query
-    output:
-      type: string
-    http:
-      method: get
-      path: /concat
-      port: 5000
-
-
 lifecycle:
   startup:
-    command: ["FLASK_APP=example.py", "flask", "run", "--host=0.0.0.0"] 
+    command: ['java', '-jar', 'CurrencyApp.jar']
+health:
+  http:
+    path: /health
+    port: 8080
+actions:
+  convert:
+    help: Convert a currency into another currency
+    http:
+      port: 8080
+      method: get
+      path: /convert
+    arguments:
+      units:
+        type: number
+        in: query
+        required: true
+      from:
+        type: string
+        in: query
+        required: true
+      to:
+        type: string
+        in: query
+        required: true
+    output:
+      type: object
+      contentType: application/json
+      properties:
+        units:
+          type: number
+        currency:
+          type: string
